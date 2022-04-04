@@ -130,7 +130,6 @@ table.display {
                                                     </span>
                                                     <select id="multiples" class="form-control" name="AgentGivenName[]"
                                                         multiple>
-                                                        <option value="">Select...</option>
                                                         <?php
                                                     $sql = "SELECT DISTINCT AgentGivenName FROM eCSRStat";
                                                     $rs=odbc_exec($conn, $sql);
@@ -159,7 +158,6 @@ table.display {
                                                     </span>
                                                     <select id="multiple" class="form-control" name="SkillsetName[]"
                                                         multiple>
-                                                        <option value="">Select...</option>
                                                         <?php
                                                     $sql = "SELECT DISTINCT SkillsetName FROM eCSRStat";
                                                     $rs=odbc_exec($conn, $sql);

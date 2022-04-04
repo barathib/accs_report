@@ -225,7 +225,6 @@ $(document).ready(function() {
                                                             $rss2=odbc_exec($conn, $sql2);
                                                             $RowNumber2 = odbc_num_rows($rss2);
                                                             $times=odbc_result($rss2, "acttime");
-                                                            print_r($times);
                                                             if ($times != '') {
                                                                 $totalacttive=0;
                                                                 $totaltime= gmdate("H:i:s", $times);

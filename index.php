@@ -127,7 +127,6 @@ $(document).ready(function() {
                                                     </span>
                                                     <select id="multiple" class="form-control" name="Skillset[]"
                                                         multiple>
-                                                        <option value="">Select...</option>
                                                         <?php
                                                     $sql = "SELECT DISTINCT Skillset FROM iskillsetstat";
                                                     $rs=odbc_exec($conn, $sql);
@@ -198,7 +197,7 @@ $(document).ready(function() {
                                                     sum(CallsAnsweredAfterThreshold) CallsAnsweredAfterThreshold,sum(CallsAnsweredDelay) CallsAnsweredDelay,sum(SkillsetAbandonedAftThreshold) SkillsetAbandonedAftThreshold,sum((CallsAnswered+SkillsetAbandoned)-(CallsAnsweredAfterThreshold+SkillsetAbandonedAftThreshold)*100/(NULLIF(CallsAnswered,0)+NULLIF(SkillsetAbandoned,0))) Servicelevel,
                                                     sum(SkillsetAbandonedDelay) SkillsetAbandonedDelay,
                                                     sum(TalkTime) AVGTalkTime,
-                                                    sum(TalkTime+PostCallProcessingTime/NULLIF(CallsAnswered,0)) Averagehandletime,sum(VirtualCallsAbandoned/NULLIF(SkillsetAbandoned,0)) AverageAbandonedtime FROM iskillsetstat WHERE Timestamp BETWEEN '".$fromdate." 00:00:01' AND '".$todate." 23:59:59' AND Skillset IN".$Skillset_name." GROUP BY cast(Timestamp as date) order by cast(Timestamp as date) desc
+                                                    sum(TalkTime+PostCallProcessingTime/NULLIF(CallsAnswered,0)) Averagehandletime,sum(VirtualCallsAbandoned/NULLIF(SkillsetAbandoned,0)) AverageAbandonedtime FROM iskillsetstat WHERE Timestamp BETWEEN '".$fromdate." 00:00:01' AND '".$todate." 23:59:59' AND Skillset IN".$Skillset_name." GROUP BY cast(Timestamp as date),Skillset order by cast(Timestamp as date) desc
                                                     ";
                                                     } else {
                                                         $sql = "SELECT Skillset,cast(Timestamp as date) as currentdate,sum(CallsOffered) CallsOffered,sum(CallsAnswered) CallsAnswered,sum(VirtualCallsAbandoned) Abandonedcalls,sum(CallsAnswered+VirtualCallsAbandoned) Totalcalls,
